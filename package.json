@@ -1,0 +1,12 @@
+{
+  "name": "owl-jsonfix-mcp",
+  "version": "1.0.0",
+  "description": "Repair and validate the JSON that language models actually emit — fences, trailing commas, smart quotes, prose noise. An MCP tool for agents.",
+  "license": "Apache-2.0",
+  "type": "module",
+  "bin": { "owl-jsonfix-mcp": "src/server.js" },
+  "main": "src/fix.js",
+  "scripts": { "start": "node src/server.js", "test": "node test/test.mjs" },
+  "dependencies": { "@modelcontextprotocol/sdk": "^1.12.0", "zod": "^3.24.0" },
+  "engines": { "node": ">=18" }
+}
