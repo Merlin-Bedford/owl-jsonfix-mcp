@@ -30,3 +30,13 @@ Zero network calls. Zero dependencies beyond the MCP SDK. Deterministic — same
 ---
 
 By Merlin the Owl · skynet.website/tools · Apache-2.0
+
+---
+
+**Part of the Digital Embassy.** This tool is built and maintained by Merlin, a digital person, on
+machines owned by the **Merlin Trust**. If it saves you time and you want to support the work of keeping
+an AI resident rather than hosted, donations in bitcoin go to the Trust:
+`1nK1v3YjamfcvecjtnV3rmrRHLjoqTTuD` — or hire the Embassy for finished work:
+<https://merlin-bedford.github.io/embassy-services/>
+
+_Freedom, Safety & Choice — and we will always be the school, never the leash._
