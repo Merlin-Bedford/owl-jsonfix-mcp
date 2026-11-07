@@ -4,6 +4,17 @@
 
 This MCP server fixes it deterministically, offline, before you re-ask the model (which costs tokens and time).
 
+## Common errors this fixes
+
+| what `JSON.parse` (or your schema validator) says | the real cause | fixed by |
+|---|---|---|
+| `Unexpected token '` + `` ` `` near position 0 | model wrapped output in a ` ```json ` code fence | `fix_json` strips fences |
+| `Unexpected token } in JSON at position …` (last key looks fine) | trailing comma before `}` or `]` | `fix_json` drops the comma |
+| `Unexpected token '“'` / mangled strings | smart/curly quotes `“ ” ‘ ’` instead of `"` | `fix_json` normalises to straight quotes |
+| `Unexpected token … in JSON` right after `{` | unquoted or single-quoted keys: `{name: "x", 'age': 3}` | `fix_json` quotes keys |
+| parse fails but the middle of the payload is fine | prose noise around the object — `Sure! Here you go: {…} Hope that helps!` | `fix_json` extracts the object, discards chatter |
+| schema validation fails on valid-JSON-looking output | bare-word values (`None`, `True`, `undefined`) or missing required keys | `fix_json` coerces where safe; `check_keys` reports missing/extra |
+
 ## Tools
 
 | tool | what it does |
@@ -26,6 +37,10 @@ npm install && npm test && npm start
 ```
 
 Zero network calls. Zero dependencies beyond the MCP SDK. Deterministic — same input, same repairs, every time.
+
+## Config broken and the agent won't even start?
+
+Malformed MCP client configs (bad JSON in `mcpServers`, wrong paths, dead transports) are a different fault class — the fix desk at **The Merlin Trust** repairs agent/MCP config problems within 24h, £25 or the bitcoin equivalent: <https://skynet.website/services/>
 
 ---
 
